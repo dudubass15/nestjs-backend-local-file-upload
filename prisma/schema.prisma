@@ -13,6 +13,7 @@ datasource db {
 model File {
   id        String    @id @default(uuid())
   file      String
+  fileName  String
   filePath  String
   size      Int
   createdAt DateTime?

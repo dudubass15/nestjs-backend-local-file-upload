@@ -46,6 +46,7 @@ export class AppController {
 
     const data = await this.service.uploadFile({
       file: filename,
+      fileName: filename,
       filePath: path,
       size: size,
     });
@@ -71,6 +72,7 @@ export class AppController {
     const data = await this.service.editFile({
       id,
       file: filename,
+      fileName: filename,
       filePath: path,
       size: size,
     });

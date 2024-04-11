@@ -6,6 +6,7 @@ export class PrismaFileMapper {
     return {
       id: data.id,
       file: data.file,
+      fileName: data.fileName,
       filePath: data.filePath,
       size: data.size,
       createdAt: data.createdAt,
@@ -17,6 +18,7 @@ export class PrismaFileMapper {
     return new FileEntity({
       id: raw.id,
       file: raw.file,
+      fileName: raw.file,
       filePath: raw.filePath,
       size: raw.size,
       createdAt: raw.createdAt,

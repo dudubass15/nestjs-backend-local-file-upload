@@ -25,7 +25,7 @@ export class AppService {
     return newFile;
   }
 
-  async editFile({ id, file, filePath, size }: EditUploadFileModel) {
+  async editFile({ id, file, fileName, filePath, size }: EditUploadFileModel) {
     const fileExists = await this.repository.findById(id);
 
     if (!fileExists) {
@@ -36,6 +36,7 @@ export class AppService {
       const data = await this.repository.save({
         id,
         file,
+        fileName,
         filePath,
         size,
         createdAt: fileExists.createdAt,
@@ -49,6 +50,7 @@ export class AppService {
       const data = await this.repository.save({
         id,
         file,
+        fileName,
         filePath,
         size,
         createdAt: fileExists.createdAt,
