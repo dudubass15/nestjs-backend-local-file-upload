@@ -42,11 +42,11 @@ export class AppController {
     }),
   )
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    const { filename, path, size } = file;
+    const { filename, path, size, originalname } = file;
 
     const data = await this.service.uploadFile({
       file: filename,
-      fileName: filename,
+      fileName: originalname,
       filePath: path,
       size: size,
     });
@@ -82,6 +82,7 @@ export class AppController {
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    await this.service.excludeFile(id);
+    const data = await this.service.excludeFile(id);
+    return { file: data };
   }
 }

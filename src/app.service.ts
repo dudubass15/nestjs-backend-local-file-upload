@@ -10,10 +10,11 @@ export class AppService {
   constructor(private repository: FileRepository) {}
 
   async uploadFile(data: UploadFileModel) {
-    const { file, filePath, size } = data;
+    const { file, filePath, size, fileName } = data;
 
     const uploadData = new FileEntity({
       file: file,
+      fileName: fileName,
       filePath: filePath,
       size: size,
       createdAt: new Date(),
