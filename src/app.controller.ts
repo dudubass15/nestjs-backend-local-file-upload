@@ -32,6 +32,23 @@ export class AppController {
     return { file: data };
   }
 
+  @Get('/search/:multitrack')
+  async searchMultitrack(
+    @Param('multitrack') multitrack: string,
+    @Request() request,
+  ) {
+    const data = await this.service.listAllFiles(
+      request.query.hasOwnProperty('page') ? request.query.page : 1,
+      request.query.hasOwnProperty('size') ? request.query.size : 16,
+    );
+
+    const item = data.results.filter((result) =>
+      result.fileName.includes(multitrack),
+    );
+
+    return item;
+  }
+
   @Post('')
   @UseInterceptors(
     FileInterceptor('file', {
